@@ -152,9 +152,9 @@
 
 | 분류 |  산출물  |
 | :---: | :---: |
-| 보고서 | [수행계획서](Doc/1_1_OSSProj_01_버스태워조_수행계획서.md)🔹[중간보고서](Doc/1_2_OSSProj_01_버스태워조_수행계획발표자료%20.pdf)🔹[최종보고서](Doc/1_2_OSSProj_01_버스태워조_수행계획발표자료%20.pdf) |
-| 발표자료 | [수행계획발표자료](Doc/2_1_OSSProj_01_버스태워조_중간보고서.md)🔹[중간발표자료](Doc/2_2_OSSProj_01_버스태워조_중간발표자료.pdf)🔹[최종발표자료](Doc/2_2_OSSProj_01_버스태워조_중간발표자료.pdf)|
-| 다이어그램 | [유스케이스](Doc/Diagrams/happy_diagrams-useCase.drawio.png)🔹[시퀀스](Doc/4_4_OSSProj_01_버스태워조_Overivew.md)🔹[범위&일정&이슈관리](Doc/4_1_OSSProj_01_버스태워조_범위_일정_이슈관리.md)🔹[회의록](Doc/4_2_OSSProj_01_버스태워조_회의록.md) |
+| 보고서 | [수행계획서](/Doc/Reports/수행계획서_S7_행복해조.pdf)🔹[중간보고서](Doc/1_2_OSSProj_01_버스태워조_수행계획발표자료%20.pdf)🔹[최종보고서](Doc/1_2_OSSProj_01_버스태워조_수행계획발표자료%20.pdf) |
+| 발표자료 | [제안발표자료](/Doc/Presentation/제안발표_S7_행복해조.pdf)🔹[중간발표자료](/Doc/Presentation/중간발표_S7_행복해조.pdf)🔹[최종발표자료](/Doc/Presentation/최종발표_S7_행복해조.pdf)|
+| 다이어그램 | [유스케이스](/Doc/useCaseDiagramExplain.md)🔹[시퀀스](/Doc/sequenceDiagramExplain.md)🔹[시스템블록](/Doc/systemBlockDiagramExplain.md)🔹[회의록](Doc/4_2_OSSProj_01_버스태워조_회의록.md) |
 
 ## 🤝 **Team&Members**
 
@@ -162,11 +162,11 @@
 
   | 성명 | 역할 |
   | :---: | :---: |
-  | **진대한** | 멘토 |
-  | **김민재** | Machine Learning & 팀장 |
-  | **이보성** | Frontend |
-  | **권일준** | Backend |
-  | **이승호** | Cloud Server & FE,BE보조 |
+  | **진대한** | 👨🏻‍🏫멘토👨🏻‍🏫 |
+  | **김민재** | 👑Machine Learning & 팀장👑 |
+  | **이보성** | 📈Frontend📈 |
+  | **권일준** | 🖥️Backend🖥️ |
+  | **이승호** | 🌐Cloud Server & FE,BE보조🌐 |
 
 ## 라이선스
 
