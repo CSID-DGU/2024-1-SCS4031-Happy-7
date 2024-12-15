@@ -33,46 +33,6 @@
         }
     </style>
 </head>
-<script src="https://accounts.google.com/gsi/client" async defer></script>
-<script>
-    function handleCredentialResponse(response) {
-        console.log("Encoded JWT ID token: " + response.credential);
-
-        // 서버로 토큰을 전송하여 검증하는 작업
-        fetch('https://observator.ngrok.dev/api/auth/google', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ token: response.credential })
-        })
-        .then(response => {
-            if (response.ok) {
-                // 서버에서 성공적으로 로그인 처리 -> /home으로 리디렉션
-                window.location.href = "https://observator.ngrok.dev/home";
-            } else {
-                console.error("Authentication failed");
-            }
-        })
-        .catch(error => {
-            console.error("Error during authentication", error);
-        });
-    }
-
-    window.onload = function () {
-        google.accounts.id.initialize({
-            client_id: "1052925642956-2550ukjm4u2qms261ukbl189hncdngfd.apps.googleusercontent.com",
-            callback: handleCredentialResponse,
-            ux_mode: "popup"
-        });
-        google.accounts.id.renderButton(
-            document.querySelector(".g_id_signin"),
-            { theme: "outline", size: "large" }
-        );
-        google.accounts.id.prompt();
-    }
-</script>
-</head>
 <body>
     <!-- 배경 동영상 -->
     <video autoplay muted loop class="video-background">
@@ -93,7 +53,7 @@
                 <input type="password" id="password" name="password" th:placeholder="#{password_placeholder}">
             </div>
             <div id="error-message" class="error-message" th:if="${param.error}" style="color: red; font-size: 0.9em;" th:text="#{login_error}">
-                로그인 실패. 아이디와 비밀번호를 확인해주세요.
+                아이디 혹은 비밀번호가 일치하지 않습니다.
             </div>
             <div>
                 <button type="submit" class="login-button" th:text="#{login}">로그인</button>

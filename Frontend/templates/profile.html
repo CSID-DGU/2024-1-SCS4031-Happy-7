@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>OBservator - Profile</title>
+    <link rel="stylesheet" href="./css/profile.css">
+    <script>
+        // Check if the URL contains the success parameter and show an alert
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.has('success')) {
+                alert('Your information has been saved successfully!');
+            }
+        };
+
+        function sendEmail() {
+            fetch('/email/send-email', {
+                method: 'POST'
+            })
+            .then(response => response.text().then(message => ({ status: response.status, message })))
+            .then(result => {
+                if (result.status === 200) {
+                    alert('Email sent successfully!');
+                } else if (result.status === 400) {
+                    alert('Failed to send email: ' + result.message);
+                } else {
+                    alert('An unexpected error occurred: ' + result.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while sending the email.');
+            });
+        }
+        
+        function viewTerms() {
+            var modal = document.getElementById("terms-modal");
+            modal.style.display = "block";
+        }
+    
+        function closeTerms() {
+            var modal = document.getElementById("terms-modal");
+            modal.style.display = "none";
+        }
+    
+        window.onclick = function(event) {
+            var modal = document.getElementById("terms-modal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        };
+    </script>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <div class="logo" th:text="#{header_profile}"> 프로필 </div>
+        <nav>
+            <div class="language-switcher">
+                <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
+            </div>
+            <a href="/trade" th:text="#{header_dashboard}">대시보드</a>
+            <a href="/profile" th:text="#{header_profile}">프로필</a>
+            <a href="/home" th:text="#{header_home}">홈</a>
+            <a href="#about"></a>
+        </nav>
+    </header>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <!-- 프로필 업데이트 섹션 -->
+    <div class="profile-container">
+        <h2 th:text="#{update_profile}">Update Profile</h2>
+
+        <p class="upbit-status">
+            <span th:text="#{upbit_keys_set}">Upbit Keys Set:</span>
+            <span th:text="${user.upbitKeysSet ? 'Yes' : 'No'}">No</span>
+        </p>
+
+        <form th:action="@{/profile}" method="post">
+            <div class="form-group">
+                <label for="username" th:text="#{username}">Username:</label>
+                <input type="text" id="username" name="username" th:value="${user.username}" readonly />
+            </div>
+            <div class="form-group">
+                <label for="email" th:text="#{email}">E-mail:</label>
+                <input type="text" id="email" name="email" th:value="${user.email}" />
+            </div>
+            <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+                <label for="upbitAccessKey" th:text="#{Acckey}">Upbit Access Key:</label>
+                <button type="button" onclick="viewTerms()" class="terms-button" th:text="#{how_to_key}">발급받는 방법</button>
+            </div>
+            <input type="text" id="upbitAccessKey" name="upbitAccessKey" th:value="${user.upbitAccessKey}" />
+            <div class="form-group">
+                <label for="upbitSecretKey" th:text="#{Seckey}">Upbit Secret Key:</label>
+                <input type="password" id="upbitSecretKey" name="upbitSecretKey" th:value="${user.upbitSecretKey}" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="save-button" th:text="#{save}">Save Changes</button>
+            </div>
+        </form>
+
+        <h3 th:text="#{balance_info}">Upbit Balance Information</h3>
+
+        <div class="email-container">
+            <button type="button" onclick="sendEmail()" class="email-button" th:text="#{send_email}">Send Email</button>
+        </div>
+
+        <p th:if="${errorMessage}" class="error-message">[[${errorMessage}]]</p>
+
+        <table th:if="${hasKeys}" class="balance-table">
+            <thead>
+                <tr>
+                    <th th:text="#{currency}">Currency</th>
+                    <th th:text="#{balance}">Balance</th>
+                    <th th:text="#{avg_buy_price}">Avg Buy Price</th>
+                </tr>
+            </thead>
+            <tbody id="balanceTableBody">
+                <tr th:each="balance : ${balances}">
+                    <td th:text="${balance.currency}"></td>
+                    <td th:text="${balance.balance}"></td>
+                    <td th:text="${balance.avgBuyPrice}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <script>
+            function fetchBalances() {
+                fetch('/api/balances')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error("Error fetching balances: " + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        //console.log(data);
+                        const tableBody = document.getElementById('balanceTableBody');
+                        tableBody.innerHTML = ''; // Clear existing rows
+        
+                        data.forEach(balance => {
+                            const row = `
+                                <tr>
+                                    <td>${balance.currency}</td>
+                                    <td>${balance.balance}</td>
+                                    <td>${balance.avg_buy_price}</td>
+                                </tr>
+                            `;
+                            tableBody.innerHTML += row; // Append new rows
+                        });
+                    })
+                    .catch(error => console.error(error));
+            }
+        
+            // Fetch balances every second
+            setInterval(fetchBalances, 1000);
+        </script>
+
+        <div class="back-button-container">
+            <a th:href="@{/home}"><br><br>
+                <button type="button" class="back-button" th:text="#{go_back_home}">Go Back to Home</button>
+            </a>
+        </div>
+    </div>
+</body>
+<div id="terms-modal">
+    <div id="terms-modal-content">
+        <span id="close-terms" onclick="closeTerms()">&times;</span>
+        <h3 th:text="#{how_to_modal_title}">UPbit API key 발급 받는 방법</h3>
+        <div>
+            <p th:text="#{step1}">1. UPbit에 로그인 한다.</p>
+            <p th:text="#{step2}">2. 고객센터 메뉴의 Open API 항목에 들어간다.</p>
+            <p><a th:href="'https://upbit.com/mypage/open_api_management'" target="_blank" th:text="#{step3_link}">키 발급 바로가기</a></p>
+            <p th:text="#{step3}">3. Open API 사용하기 버튼을 클릭한다.</p>
+            <p th:text="#{step4}">4. 자산조회, 주문조회, 주문하기 항목을 선택하고 IP 주소에 '15.165.154.150'을 입력하여 등록한다.</p>
+            <p th:text="#{step5}">5. 개인정보 수집 및 이용 동의항목에 동의하고 'Open API key 발급하기' 버튼을 누른다.</p>
+            <p th:text="#{step6}">6. 발급받은 Access key와 Secret key을 이 페이지에 입력한다.</p>
+            <p th:text="#{step6_note}">(단, Secret key는 다시 확인할 수 없기에 안전한 곳에 추가로 저장한다.)</p>
+        </div>
+    </div>
+</div>
+</html>

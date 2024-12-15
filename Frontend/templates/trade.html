@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitcoin Dashboard</title>
+
+    <link rel="stylesheet" href="./css/trade.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo" th:text="#{header_dashboard}">Bitcoin 대시보드</div>
+        <nav>
+            <div class="language-switcher">
+                <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
+            </div>
+            <a href="/trade" th:text="#{header_dashboard}">대시보드</a>
+            <a href="/profile" th:text="#{header_profile}">프로필</a>
+            <a href="/home" th:text="#{header_home}">홈</a>
+            <a href="#about"></a>
+        </nav>
+    </header>
+
+
+    <div class="container">
+    
+        <!-- 매인 차트 -->
+        <div class="left-panel">
+            
+            <div class="chart-section">
+           <div id="real_chart">
+            <div id="box-left">
+                <!-- 시세 정보 헤더 -->
+                <div class="price-header">
+                    <div class="price-info">
+                        <div class="titile_bit">
+                            <img class="bit_img" src="./assets/bit_sim.png" alt="">
+                            <a th:text="#{bitcoin}">비트코인 BTC/KRW</a>
+                        </div>
+                        <h7  class="current-price">Loading...</h7>
+                        <aa class="price-change">
+                            <div class="price-stats">
+                        
+                                <div>
+                                    <span class="change-percent">+2.07%</span>
+                                    <span class="change-amount">▲ 2,756,000</span>
+                                </div>
+                                <div>
+                                    <span class="high-price" th:text="#{high_price}">최고가 : </span>
+                                    <span class="high-price">137,650,000</span>
+                                    <br>
+                                    <span class="low-price" th:text="#{low_price}">최저가 : </span>
+                                    <span class="low-price">133,001,000</span>
+                                </div>
+                                <div class="additional-info">
+                                    <span th:text="#{h_trade}">24h 총거래 : </span>
+                                    <br>
+                                    <span class="volume">8,149.673 BTC</span>
+                                    <br>
+                                    <span th:text="#{h_tradeamount}">24h 총거래액 : </span>
+                                    <br>
+                                    <span class="trade-amount">1,084,180,672,622</span>
+                                </div>
+                            </div>
+                        </aa>
+                    </div>
+                </div>
+                <div class="exchange-prices">
+                    <table class="exchange-table">
+                        <tr>
+                            <td class="exchange-name" style="color: #007BFF;" th:text="#{bitFlyer}">bitFlyer</td>
+                            <td id="bitflyer-price">-</td>
+                            
+                            <td class="exchange-name" style="color: #28a745;" th:text="#{Binance}">Binance</td>
+                            <td id="binance-price">-</td>
+                            
+                            <td class="exchange-name" style="color: chocolate;">OKX</td>
+                            <td id="okx-price">-</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div id="box-right" class="section">
+                <h3 >
+                    <span th:text="#{profit_threshold}"> Profit Threshold </span>
+
+                    <span class="tooltip-icon">ℹ️
+                        <span class="tooltip-modal" th:text="#{explanation}">
+                            Threshold explanation
+                        </span>
+                    </span>
+
+                </h3>
+                <div>
+                    <div>
+                        <p>
+                            <span th:text="#{threshold_level}">Threshold Level: </span>
+                            <span id="Threshold-level-display">1</span></p>
+                        <input type="range" id="Threshold-slider" name="ThresholdLevel" min="1" max="10" value="1" oninput="updateThresholdLevelDisplay(this.value)">
+                        <input type="hidden" id="hidden-Threshold-level" name="ThresholdLevel" value="1">
+                        <br>
+                    </div>
+                    <form id="form1" th:action="@{/start}" method="post" style="display: block;" onsubmit="addThresholdLevelToForm(this); return handleForm1Click();">
+                        <button type="submit" style="
+                            margin-top: 10px;
+                            padding: 10px 140px;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                            border: none;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            background-color: #0055ff;
+                            color: #ffffff;"
+                            onmouseup="this.style.backgroundColor='#218838'; this.style.transform='translateY(0)';"
+                            th:text="#{trade_start}">
+                            자동매매 시작
+                        </button>
+                    </form>
+
+                    <form id="form2" th:action="@{/change}" method="post" style="display: none;" onsubmit="addThresholdLevelToForm(this); return handleForm2Click();">
+                        <button type="submit" style="
+                            margin-top: 10px;
+                            padding: 10px 140px;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                            border: none;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            background-color:#28a745;
+                            color: #ffffff;"
+                            onmouseup="this.style.backgroundColor='#218838'; this.style.transform='translateY(0)';"
+                            th:text="#{change_threshold}">
+                            트레숄드 변경
+                        </button>
+                    </form>
+                    
+                    <form id="form3" style="display: flex; margin-top: 10px;" th:action="@{/end}" method="post" onsubmit=handleForm3Click()>
+                        <button type="submit" style="
+                            padding: 10px 140px;
+                            font-size: 0.7rem;
+                            font-weight: bold;
+                            border: none;
+                            border-radius: 8px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                            background-color: #cf3328;
+                            color: #ffffff;
+                            margin: 10 11px;"
+                            onmouseup="this.style.backgroundColor='#c82333'; this.style.transform='translateY(0)';"
+                            th:text="#{trade_end}">
+                            자동매매 중지
+                        </button>
+                    </form> 
+                </div>
+            </div>
+           </div>     
+
+            
+                  
+                   
+                               
+           <div>
+            <div class="chart-tabs">
+                <button class="tab-button active" onclick="showChart('btcChart')" th:text="#{current}">실시간</button>
+                <button class="tab-button" onclick="showChart('btcWeekChart')" th:text="#{week}">일주일</button>
+                <button class="tab-button" onclick="showChart('btcMonthChart')" th:text="#{month_1}">1개월</button>
+                <button class="tab-button" onclick="showChart('btcThreeMonthChart')" th:text="#{month_3}">3개월</button>
+                <button class="tab-button" onclick="showChart('btcSixMonthChart')" th:text="#{month_6}">6개월</button>
+            </div>
+            
+            <div class="chart-container" id="btcChart-container">
+                <canvas id="btcChart" width="100%" height="600"></canvas>
+            </div>
+            
+            <div class="chart-container hidden" id="btcWeekChart-container">
+                <canvas id="btcWeekChart" width="100%" height="200"></canvas>
+            </div>
+            
+            <div class="chart-container hidden" id="btcMonthChart-container">
+                <canvas id="btcMonthChart" width="100%" height="200"></canvas>
+            </div>
+        
+            <div class="chart-container hidden" id="btcThreeMonthChart-container">
+                <canvas id="btcThreeMonthChart" width="100%" height="200"></canvas>
+            </div>
+        
+            <div class="chart-container hidden" id="btcSixMonthChart-container">
+                <canvas id="btcSixMonthChart" width="100%" height="200"></canvas>
+            </div>
+        </div>
+        
+                
+              
+                
+            </div>
+            
+            <br>
+        </div>
+            
+        <!-- 오른쪽 패널 -->
+
+        <div style="gap: 20px; align-items: flex-start;">
+        <div style="display: flex; gap: 20px; align-items: flex-start;">
+
+        <div class="section" style="max-width: 300px; height: 100%;">
+            <h3 th:text="#{my_asset}">My Assets</h3>
+                <div class="total-value">
+                    <p>
+                        <span th:text="#{total_value}">Total Value: </span>
+                        <span id="total-value">0 KRW</span>
+                    </p>
+                    <p>
+                        <span th:text="#{profit_loss}">Profit/Loss: </span>
+                        <span id="profit-loss">+0% KRW</span>
+                    </p>
+                </div>
+                <div class="asset-breakdown">
+                    <h4 th:text="#{asset_breakdown}">Asset Breakdown</h4>
+                    <ul>
+                        <li>
+                            <span th:text="#{breakdown_bitcoin}">Bitcoin (BTC): </span>
+                            <span id="BTC-value">0 KRW</span>
+                        </li>
+                        <li>
+                            <span th:text="#{breakdown_won}">Won (KRW): </span>
+                            <span id="KRW-value">0 KRW</span>
+                        </li>
+                    </ul>
+                </div>
+            <div>
+                <h4 style="color: #007BFF; margin-bottom: 10px;" th:text="#{news}">Bitcoin News from cryptocompare</h4>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead class="table-header">
+                            <tr>
+                                <tbody id="news-table-body">
+                                    <!-- 뉴스가 동적으로 추가됩니다 -->
+                                </tbody>
+                            </tr>
+                        </thead>
+                        <tbody class="table-body" id="news-table-body">
+                            <!-- 뉴스가 동적으로 추가됩니다 -->
+                        </tbody>
+                    </table>
+
+                <table class="upbit-realtime-table">
+                    <thead>
+                        <tr class="upbit-realtime-tr">
+                            <th class="upbit-realtime-th" th:text="#{trade_price}">체결가 (KRW)</th>
+                            <th class="upbit-realtime-th" th:text="#{trade_amount}">체결량</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tradeTableBody">
+                        <!-- 실시간 데이터가 여기에 추가됩니다 -->
+                    </tbody>
+                </table>
+                                
+            </div>
+        </div>
+
+        <!-- 누적호가창 -->
+        <div class="accumulated-orderbook-container">
+            <h3 class="orderbook-header" th:text="#{orderbook}">누적호가창</h3>
+       
+            <table class="orderbook-table">
+                <thead>
+                    <tr class="table-header-row">
+                        <th class="table-header-cell" th:text="#{orderbook_price}">일반호가</th>
+                        <th class="table-header-cell" th:text="#{orderbook_qty}">누적호가</th>
+                        <th class="table-header-cell" th:text="#{orderbook_total}">호가주문</th>
+                        <th class="table-header-cell" th:text="#{orderbook_ratio}">비중</th>
+                    </tr>
+                </thead>
+                <tbody id="special-orderbook-body">
+                    <!-- 데이터가 여기에 삽입됩니다 -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Trade Bitcoin 섹션 -->
+        <div class="trade-section">
+            <h3 class="section-header" th:text="#{trade_bitcoin}">Trade Bitcoin</h3>
+            <!-- Buy Button Form -->
+            <form id="buyForm" th:action="@{/buy}" method="post" class="trade-form">
+                <label for="buy-price" th:text="#{trade_buy_price}">Price to Buy (KRW): </label>
+                <input type="text" id="buy-price" name="price" th:placeholder="#{buy_placeholder}" required>
+                <button type="submit" class="buy-button" value="buy" th:text="#{trade_buy}">Buy</button>
+            </form>
+            <div id="buyMessage"></div>
+            <br>
+            <!-- Sell Button Form -->
+            <form id="sellForm" th:action="@{/sell}" method="post" class="trade-form">
+                <label for="sell-volume" th:text="#{trade_sell_volume}">Volume to Sell (BTC): </label>
+                <input type="text" id="sell-volume" name="volume" th:placeholder="#{sell_placeholder}" required>
+                <button type="submit" class="sell-button" value="sell" th:text="#{trade_sell}">Sell</button>
+            </form>
+            <div id="sellMessage"></div>
+            <br>
+            
+                <h3 class="section-header" th:text="#{s_order}">Schedule Order</h3>
+                <form id="scheduleForm" th:action="@{/scheduleOrder}" method="post" class="schedule-form">
+                    <label for="orderType" th:text="#{order_type}">Order Type: </label>
+                    <select id="orderType" name="action" class="sc_ipt" required>
+                        <option value="buy" th:text="#{trade_buy}">Buy</option>
+                        <option value="sell" th:text="#{trade_sell}">Sell</option>
+                    </select>
+                    <label for="orderAmount" th:text="#{schedule_trade_amount}">Enter Amount (KRW for Buy / BTC for Sell): </label>
+                    <input type="text" id="orderAmount" name="amount" class="sc_ipt" th:placeholder="#{schedule_amount_placeholder}" required>
+                    <label for="targetTime" th:text="#{schedule_trade_time}">Target Time (hh:mm:ss.SSS): </label>
+                    <input type="text" id="targetTime" name="targetTime" class="sc_ipt" th:placeholder="#{schedule_time_placeholder}" required>
+                    <button type="submit" class="schedule-button" th:text="#{schedule_trade}">Schedule Order</button>
+                </form>
+                <div id="scheduleMessage"></div>
+        </div>
+    </div>
+
+<script src="./js/scripts.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

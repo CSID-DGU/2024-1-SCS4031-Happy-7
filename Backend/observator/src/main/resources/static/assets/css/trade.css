@@ -143,17 +143,14 @@ body {
     top: 0;
     z-index: 1000;
 }
-
 .header .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
-
 .header nav {
     display: flex;
     gap: 15px;
 }
-
 .header nav a {
     color: white;
     text-decoration: none;
@@ -163,12 +160,12 @@ body {
     border-radius: 4px;
     transition: background-color 0.3s;
 }
-
 .header nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
 /* 헤더  */
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -209,6 +206,7 @@ body {
 
 .price-change {
     display: flex;
+    width: 100%;
     flex-direction: column;
     gap: 10px;
 }
@@ -271,8 +269,11 @@ body {
 
 .chart-container {
     width: 100%;
-    height: 400px;
+    height: 500px;
 }
+
+
+
 
 body {
     margin: 0;
@@ -457,6 +458,8 @@ body {
     color: #dc3545;
 }
 
+
+
 .accumulated-orderbook-container {
     flex: 2;
     width: 610px;
@@ -546,7 +549,9 @@ body {
 
 .schedule-button {
     background-color: #007BFF;
+    padding: 10px;
     color: white;
+    border-radius: 6px;
 }
 
 /* Table Styles */
@@ -572,16 +577,16 @@ body {
 }
 
 .current-price {
+
     padding-top: 10px;
     padding-bottom: 10px;
     font-size: xx-large;
     font-weight: 800;
+    
 }
-
 .price-header{
     padding-bottom: 10.5px
 }
-
 .form-label{
     padding-bottom: 22px;
 }
@@ -593,38 +598,255 @@ body {
     background-color: #f9f9f9;
     font-size: 10px; /* 폰트 크기 축소 */
 }
-
 .crypto-table-header {
     background-color: #f4f4f4;
 }
-
 .crypto-table-header-cell {
     padding: 3px; /* 헤더 셀 패딩 축소 */
     font-weight: bold;
     text-align: left;
     border-bottom: 1px solid #dddddd;
 }
-
 .crypto-table-row-cell {
     padding: 3px; /* 데이터 셀 패딩 축소 */
     border-bottom: 1px solid #dddddd;
     text-align: left;
 }
-
 .crypto-positive {
     color: green;
     font-weight: bold;
 }
-
 .crypto-negative {
     color: red;
     font-weight: bold;
 }
-
 .crypto-table-row:hover {
     background-color: #eaeaea;
 }
+.chart-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
 
+.chart-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tab-button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.tab-button.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+}
+
+.tab-button:hover {
+    background-color: #e9ecef;
+}
+
+.chart-container {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+.main-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+.left-panel, .right-panel {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1; /* 균등 분배 */
+}
+
+.chart-section {
+    margin-bottom: 20px;
+}
+
+.price-header {
+    margin-bottom: 20px;
+}
+
+.price-header .titile_bit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.price-header .bit_img {
+    width: 30px;
+    height: 30px;
+}
+
+.price-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sc_ipt{
+    padding: 10px;
+}
+
+.price-info .price-stats div {
+    margin-top: 5px;
+}
+
+.exchange-prices {
+    margin-top: 20px;
+}
+
+.exchange-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.exchange-table td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.exchange-name {
+    font-weight: bold;
+}
+
+.right-panel h3 {
+    margin-bottom: 20px;
+}
+
+.right-panel form {
+    margin-bottom: 10px;
+}
+
+.right-panel button {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.right-panel button:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.right-panel button:active {
+    transform: translateY(2px);
+}
+
+.right-panel .start-button {
+    background-color: #0055ff;
+    color: #fff;
+}
+
+.right-panel .start-button:hover {
+    background-color: #0044cc;
+}
+
+.right-panel .stop-button {
+    background-color: #cf3328;
+    color: #fff;
+}
+
+.right-panel .stop-button:hover {
+    background-color: #bd2130;
+}
+
+#real_chart {
+    display: flex; /* Flexbox 컨테이너 */
+    gap: 30px; /* 요소 간 간격 */
+    margin: 20px;
+}
+
+.upbit-realtime-table {
+    margin: 20px 0px 0px;
+    border-collapse: collapse;
+    width: 100%;
+}
+.upbit-realtime-th, .upbit-realtime-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.upbit-realtime-th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+.upbit-realtime-tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.tooltip-icon {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: #0055ff;
+    font-size: 1.2rem;
+    margin-left: 8px;
+}
+
+.tooltip-modal {
+    visibility: hidden;
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%; /* 위치: 아래 */
+    left: 50%;
+    margin-top: 10px; /* 물음표와 모달 사이 간격 */
+    margin-left: -125px; /* 가로 정렬 */
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip-icon:hover .tooltip-modal {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-modal::after {
+    content: "";
+    position: absolute;
+    top: -5px; /* 삼각형 위치를 모달 상단에 */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent; /* 삼각형 아래쪽 화살표 */
+}
 /* 뉴스 테이블 스타일 */
 .news-section {
     background-color: #ffffff;

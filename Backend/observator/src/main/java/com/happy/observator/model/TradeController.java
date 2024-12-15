@@ -299,7 +299,7 @@ public class TradeController {
             // Python 스크립트를 실행
             ProcessBuilder processBuilder = new ProcessBuilder(
                 "python3",
-                "/home/ubuntu/project/OBservator/Backend/observator/python/test.py",
+                "/home/ubuntu/project/OBservator/Backend/observator/python/trade.py",
                 String.valueOf(threshold),
                 String.valueOf(user.getId()) // User ID 추가
             );

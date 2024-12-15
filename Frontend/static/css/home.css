@@ -1,0 +1,116 @@
+/* 전체 레이아웃 */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 헤더 배너 */
+.hero {
+    width: 100%;
+    padding: 50px 20px;
+    background-color: #f5f5f5;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    color: #333333;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #666666;
+    margin-bottom: 20px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button {
+    text-decoration: none;
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #007BFF;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+.button.secondary {
+    background-color: #28a745;
+}
+
+.button.secondary:hover {
+    background-color: #218838;
+}
+
+/* 로그아웃 버튼 */
+.logout-container {
+    margin-top: 20px;
+}
+
+.logout-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: #ffffff;
+    background-color: #dc3545;
+    border: none;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.logout-button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* 메인 정보 섹션 */
+.info-section {
+    padding: 40px 20px;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+}
+
+.info-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333333;
+}
+
+.info-section p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666666;
+}
+
+/* 푸터 */
+footer {
+    margin-top: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: #f5f5f5;
+    font-size: 0.9rem;
+    color: #999999;
+    width: 100%;
+    box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1);
+}
