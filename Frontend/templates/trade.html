@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Dashboard</title>
 
-    <link rel="stylesheet" href="./css/trade.css">
+    <link rel="stylesheet" href="../static/css/trade.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <header class="header">
         <div class="logo" th:text="#{header_dashboard}">Bitcoin 대시보드</div>
         <nav>
-            <div class="language-switcher">
+            <a class="language-switcher">
                 <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
-            </div>
+            </a>
             <a href="/trade" th:text="#{header_dashboard}">대시보드</a>
             <a href="/profile" th:text="#{header_profile}">프로필</a>
             <a href="/home" th:text="#{header_home}">홈</a>

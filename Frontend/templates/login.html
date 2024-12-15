@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>OBservator - Login</title>
-    <link rel="stylesheet" href="./css/login.css">
+    <link rel="stylesheet" href="../static/css/login.css">
     <style>
         body, html {
             margin: 0;
@@ -31,6 +31,8 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
+
+    
     </style>
 </head>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
@@ -76,15 +78,15 @@
 <body>
     <!-- 배경 동영상 -->
     <video autoplay muted loop class="video-background">
-        <source src="./assets/money.mp4" type="video/mp4">
+        <source src="../static/assets/money.mp4" type="video/mp4">
         동영상 지원되지 않는 브라우저입니다.
     </video>
     
     <div class="login-container">
         <h1>OBservator</h1>
-        <div class="language-switcher">
-        <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
-        </div>
+        
+        
+
         <form th:action="@{/login}" method="post">
             <div>
                 <input type="text" id="username" name="username" th:placeholder="#{ID_placeholder}">
@@ -100,6 +102,10 @@
             </div>
             <div>
                 <button type="button" class="signup-button" onclick="location.href='/signup'" th:text="#{signup}">회원가입</button>
+            </div>
+            <br><br>
+            <div class="language-switcher">
+                <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
             </div>
         </form>
     </div>

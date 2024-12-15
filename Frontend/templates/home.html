@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title th:text="#{title}">OBservator - Welcome!</title>
-    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="../static/css/home.css">
 </head>
 <body>
     <header class="hero">
-        <div class="language-switcher">
-            <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
-        </div>
+    
         <div class="content">
+            <br>
             <h1>OBservator</h1>
             <p th:text="#{tagline}">Your gateway to a decentralized future</p>
             <div class="button-group">
@@ -20,6 +19,11 @@
                 <form th:action="@{/logout}" method="post">
                     <button type="submit" class="logout-button" th:text="#{logout}">Logout</button>
                 </form>
+            </div>
+
+            <br><br>
+            <div class="language-switcher">
+                <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
             </div>
         </div>
     </header>

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>OBservator - Profile</title>
-    <link rel="stylesheet" href="./css/profile.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
     <script>
         // Check if the URL contains the success parameter and show an alert
         window.onload = function() {
@@ -55,9 +55,9 @@
     <header class="header">
         <div class="logo" th:text="#{header_profile}"> 프로필 </div>
         <nav>
-            <div class="language-switcher">
+            <a class="language-switcher">
                 <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
-            </div>
+            </a>
             <a href="/trade" th:text="#{header_dashboard}">대시보드</a>
             <a href="/profile" th:text="#{header_profile}">프로필</a>
             <a href="/home" th:text="#{header_home}">홈</a>
