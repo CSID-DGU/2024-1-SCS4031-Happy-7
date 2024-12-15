@@ -48,7 +48,7 @@
 
 <img src="Doc/imgs/signup_1.png" height=300>  <img src="Doc/imgs/signup_2.png" height=300>  
 
-### 3. 홈 화면 & 네비게이션 바  
+### 3. 홈 화면
 
 <img src="Doc/imgs/home.png" height=300>  
 
@@ -83,7 +83,7 @@
 ### BE
 
 ![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)  
-![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)![Amazon EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)![Amazone Route 53](https://img.shields.io/badge/Amazone%20Route%2053-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white)![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)![Apache Freemarker](https://img.shields.io/badge/Apache%20Freemarker-326CAC?style=for-the-badge&logo=apachefreemarker&logoColor=white)  
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)![Amazon EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)![Nginix](https://img.shields.io/badge/NGINX-%20009639.svg?style=for-the-badge&logo=nginx&logoColor=white)![Amazone Route 53](https://img.shields.io/badge/Amazone%20Route%2053-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white)![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)![Apache Freemarker](https://img.shields.io/badge/Apache%20Freemarker-326CAC?style=for-the-badge&logo=apachefreemarker&logoColor=white)  
 ![Amazon S3](https://img.shields.io/badge/Amazon%20S3-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)![Amazon RDS](https://img.shields.io/badge/Amazon%20RDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)  
 
 ### ML
@@ -152,9 +152,10 @@
 
 | 분류 |  산출물  |
 | :---: | :---: |
-| 보고서 | [수행계획서](/Doc/Reports/수행계획서_S7_행복해조.pdf)🔹[최종보고서](Doc/Reports/최종보고서_S7_행복해조.pdf) |
+| 보고서 | [수행계획서](/Doc/Reports/수행계획서_S7_행복해조.pdf)🔹[최종보고서](/Doc/Reports/최종보고서_S7_행복해조.pdf) |
 | 발표자료 | [제안발표자료](/Doc/Presentation/제안발표_S7_행복해조.pdf)🔹[중간발표자료](/Doc/Presentation/중간발표_S7_행복해조.pdf)🔹[최종발표자료](/Doc/Presentation/최종발표_S7_행복해조.pdf)|
-| 다이어그램 | [유스케이스](/Doc/useCaseDiagramExplain.md)🔹[시퀀스](/Doc/sequenceDiagramExplain.md)🔹[시스템블록](/Doc/systemBlockDiagramExplain.md)🔹[액티비티](/Doc/activityDiagramExplain.md)🔹[회의록](Doc/meeting_minutes.md) |
+| 다이어그램 | [유스케이스](/Doc/useCaseDiagramExplain.md)🔹[시퀀스](/Doc/sequenceDiagramExplain.md)🔹[시스템블록](/Doc/systemBlockDiagramExplain.md)🔹[액티비티](/Doc/activityDiagramExplain.md)|
+| 기타 자료 | [특허명세서](/Doc/특허명세서_S7_행복해조_최종.pdf)🔹[회의록](/Doc/meeting_minutes.md)|
 
 ## 🤝 **Team&Members**
 
