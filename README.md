@@ -4,7 +4,7 @@
 이 서비스는 머신러닝 모델을 기반으로 가상화폐 가격 변동을 예측하고, 자동으로 거래를 실행합니다.  
 **LSTM 신경망**을 활용하여 시장 데이터를 분석하고 실시간으로 유용한 매매 통찰을 제공합니다.
 
-👉[**_서비스 바로가기_**](https://observator.co.kr/login)
+👉[**_서비스 바로가기_**](https://observator.co.kr/login) (2024년 12월 24일까지 임시 오픈 예정)
 
 ## 📜 **주요 기능**
 
@@ -83,7 +83,7 @@
 ### BE
 
 ![java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)![python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)![Bash Script](https://img.shields.io/badge/bash_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white)  
-![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)![Amazon EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)![Amazone Route 53](https://img.shields.io/badge/Amazone%20Route%2053-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white)![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)![Apache Freearker](https://img.shields.io/badge/Apache%20Freemarker-326CAC?style=for-the-badge&logo=apachefreemarker&logoColor=white)  
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)![Amazon EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)![Amazone Route 53](https://img.shields.io/badge/Amazone%20Route%2053-8C4FFF?style=for-the-badge&logo=amazonroute53&logoColor=white)![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=for-the-badge&logo=Apache%20Maven&logoColor=white)![Apache Freemarker](https://img.shields.io/badge/Apache%20Freemarker-326CAC?style=for-the-badge&logo=apachefreemarker&logoColor=white)  
 ![Amazon S3](https://img.shields.io/badge/Amazon%20S3-FF9900?style=for-the-badge&logo=amazons3&logoColor=white)![Amazon RDS](https://img.shields.io/badge/Amazon%20RDS-527FFF?style=for-the-badge&logo=amazonrds&logoColor=white)![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)  
 
 ### ML
@@ -158,14 +158,15 @@
 
 ## 🤝 **Team&Members**
 
-> 팀명: 버스태워조
+> 팀명: S7_행복해조
 
-  | 역할 |  성명  |
+  | 성명 | 역할 |
   | :---: | :---: |
-  | 멘토 | **진대한** |
-  | ML&팀장 | **김민재** |
-  | FE | **이보성** |
-  | BE | **권일준**, **이승호** |
+  | **진대한** | 멘토 |
+  | **김민재** | Machine Learning & 팀장 |
+  | **이보성** | Frontend |
+  | **권일준** | Backend |
+  | **이승호** | Cloud Server & FE,BE보조 |
 
 ## 라이선스
 

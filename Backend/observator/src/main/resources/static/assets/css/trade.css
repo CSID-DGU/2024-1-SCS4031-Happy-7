@@ -127,8 +127,6 @@ body {
     color: #dc3545;
 }
 
-
-
 /* 헤더 스타일 */
 .header {
     width: 100%;
@@ -143,29 +141,108 @@ body {
     top: 0;
     z-index: 1000;
 }
+
 .header .logo {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
 .header nav {
     display: flex;
-    gap: 15px;
+    gap: 20px;
+    align-items: center;
 }
+
+/* 공통 버튼 스타일 */
 .header nav a {
-    color: white;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
 }
-.header nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+
+/* 번역 버튼 */
+.header nav .language-button {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    font-size: 0.9rem; /* 작은 폰트 */
+}
+
+.header nav .language-button:hover {
+    background-color: #007BFF;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* 로그아웃 버튼 */
+.header nav .logout-button {
+    color: white;
+    background-color: #dc3545;
+    border: none;
+}
+
+.header nav .logout-button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* 페이지 이동 버튼 */
+.header nav .page-button {
+    color: white;
+    background-color: #007BFF;
+    border: none;
+}
+
+.header nav .page-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 번역 버튼 컨테이너 */
+.language-container {
+    display: flex;
+    gap: 8px;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    align-items: center;
+}
+
+/* 번역 버튼 컨테이너 */
+.language-container {
+    display: flex;
+    gap: 8px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    align-items: center;
+}
+
+/* 번역 버튼 */
+.language-container .language-button {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-container .language-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #f0f8ff;
+    transform: scale(1.05);
 }
 
 /* 헤더  */
-
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
@@ -184,7 +261,6 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
 
 .price-info {
     display: flex;
@@ -271,9 +347,6 @@ body {
     width: 100%;
     height: 500px;
 }
-
-
-
 
 body {
     margin: 0;
@@ -458,8 +531,6 @@ body {
     color: #dc3545;
 }
 
-
-
 .accumulated-orderbook-container {
     flex: 2;
     width: 610px;
@@ -584,9 +655,11 @@ body {
     font-weight: 800;
     
 }
+
 .price-header{
     padding-bottom: 10.5px
 }
+
 .form-label{
     padding-bottom: 22px;
 }
@@ -598,31 +671,38 @@ body {
     background-color: #f9f9f9;
     font-size: 10px; /* 폰트 크기 축소 */
 }
+
 .crypto-table-header {
     background-color: #f4f4f4;
 }
+
 .crypto-table-header-cell {
     padding: 3px; /* 헤더 셀 패딩 축소 */
     font-weight: bold;
     text-align: left;
     border-bottom: 1px solid #dddddd;
 }
+
 .crypto-table-row-cell {
     padding: 3px; /* 데이터 셀 패딩 축소 */
     border-bottom: 1px solid #dddddd;
     text-align: left;
 }
+
 .crypto-positive {
     color: green;
     font-weight: bold;
 }
+
 .crypto-negative {
     color: red;
     font-weight: bold;
 }
+
 .crypto-table-row:hover {
     background-color: #eaeaea;
 }
+
 .chart-container {
     width: 100%;
     max-width: 600px;
@@ -666,8 +746,6 @@ body {
     display: none;
 }
 
-
-
 .main-container {
     display: flex;
     width: 90%;
@@ -681,7 +759,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    flex: 1; /* 균등 분배 */
+    flex: 1;
 }
 
 .chart-section {
@@ -782,8 +860,8 @@ body {
 }
 
 #real_chart {
-    display: flex; /* Flexbox 컨테이너 */
-    gap: 30px; /* 요소 간 간격 */
+    display: flex;
+    gap: 30px;
     margin: 20px;
 }
 
@@ -792,15 +870,18 @@ body {
     border-collapse: collapse;
     width: 100%;
 }
+
 .upbit-realtime-th, .upbit-realtime-td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
 }
+
 .upbit-realtime-th {
     background-color: #f4f4f4;
     font-weight: bold;
 }
+
 .upbit-realtime-tr:nth-child(even) {
     background-color: #f9f9f9;
 }
@@ -824,10 +905,10 @@ body {
     padding: 10px;
     position: absolute;
     z-index: 1;
-    top: 100%; /* 위치: 아래 */
+    top: 100%;
     left: 50%;
-    margin-top: 10px; /* 물음표와 모달 사이 간격 */
-    margin-left: -125px; /* 가로 정렬 */
+    margin-top: 10px;
+    margin-left: -125px;
     opacity: 0;
     transition: opacity 0.3s;
 }
@@ -840,13 +921,14 @@ body {
 .tooltip-modal::after {
     content: "";
     position: absolute;
-    top: -5px; /* 삼각형 위치를 모달 상단에 */
+    top: -5px;
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent #333 transparent; /* 삼각형 아래쪽 화살표 */
+    border-color: transparent transparent #333 transparent;
 }
+
 /* 뉴스 테이블 스타일 */
 .news-section {
     background-color: #ffffff;
@@ -895,4 +977,19 @@ body {
     color: #333333;
     text-align: center;
     vertical-align: middle;
+}
+
+#auto-trade-status {
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#auto-trade-status.running {
+    color: #28a745;
+    background-color: #e9f7ef;
+}
+
+#auto-trade-status.stopped {
+    color: #dc3545;
+    background-color: #f8d7da;
 }

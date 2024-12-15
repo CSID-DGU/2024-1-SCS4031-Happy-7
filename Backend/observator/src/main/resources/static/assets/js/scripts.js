@@ -946,3 +946,114 @@ function showChart(chartId) {
     // 현재 버튼 활성화
     event.target.classList.add('active');
 }
+
+const statusBox = document.getElementById('auto-trade-status');
+
+// Update trade status
+function updateAutoTradeStatus(status) {
+    const stoppedMessage = statusBox.dataset.langStopped; // Current language message
+    const runningMessage = statusBox.dataset.langRunning;
+
+    if (status === 'running') {
+        statusBox.textContent = runningMessage;
+        statusBox.style.color = '#28a745';
+        statusBox.style.backgroundColor = '#e9f7ef';
+    } else if (status === 'stopped') {
+        statusBox.textContent = stoppedMessage;
+        statusBox.style.color = '#dc3545';
+        statusBox.style.backgroundColor = '#f8d7da';
+    }
+}
+
+// 시작 버튼 이벤트 처리
+document.getElementById('form1').addEventListener('submit', function(event) {
+    event.preventDefault();
+    updateAutoTradeStatus('running');
+});
+
+// 중지 버튼 이벤트 처리
+document.getElementById('form3').addEventListener('submit', function(event) {
+    event.preventDefault();
+    updateAutoTradeStatus('stopped');
+});
+
+// 초기 상태 설정
+window.addEventListener('DOMContentLoaded', () => {
+    updateAutoTradeStatus('stopped'); // 초기 상태 설정
+});
+
+// 공통 메시지 표시 함수
+function showMessage(elementId, message, color) {
+    const messageElement = document.getElementById(elementId);
+    messageElement.textContent = message;
+    messageElement.style.color = color; // 텍스트 색상 설정
+
+    // 3초 후 메시지 삭제
+    setTimeout(() => {
+        messageElement.textContent = '';
+    }, 3000);
+}
+
+// Buy 버튼 이벤트 처리
+document.getElementById('buyForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const url = event.target.action;
+    const buyMessageElement = document.getElementById('buyMessage');
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: formData,
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            // 성공 메시지
+            const successMessage = buyMessageElement.dataset.langBuySuccess;
+            showMessage('buyMessage', successMessage, '#28a745');
+        } else {
+            // 실패 메시지
+            const failMessage = buyMessageElement.dataset.langBuyFail + (data.error);
+            showMessage('buyMessage', failMessage, '#dc3545');
+        }
+    } catch (error) {
+        console.error(error);
+        // 오류 메시지
+        const errorMessage = buyMessageElement.dataset.langError;
+        showMessage('buyMessage', errorMessage, '#dc3545');
+    }
+});
+
+// Sell 버튼 이벤트 처리
+document.getElementById('sellForm').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const url = event.target.action;
+    const sellMessageElement = document.getElementById('sellMessage');
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: formData,
+        });
+        const data = await response.json();
+
+        if (data.success) {
+            // 성공 메시지
+            const successMessage = sellMessageElement.dataset.langSellSuccess;
+            showMessage('sellMessage', successMessage, '#28a745');
+        } else {
+            // 실패 메시지
+            const failMessage = sellMessageElement.dataset.langSellFail + (data.error);
+            showMessage('sellMessage', failMessage, '#dc3545');
+        }
+    } catch (error) {
+        console.error(error);
+        // 오류 메시지
+        const errorMessage = sellMessageElement.dataset.langError;
+        showMessage('sellMessage', errorMessage, '#dc3545');
+    }
+});

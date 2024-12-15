@@ -34,21 +34,97 @@ body {
 
 .header nav {
     display: flex;
-    gap: 15px;
+    gap: 20px; /* 메뉴 간 간격을 더 넓게 */
+    align-items: center;
 }
 
+/* 공통 버튼 스타일 */
 .header nav a {
-    color: white;
     text-decoration: none;
     font-size: 1rem;
-    font-weight: bold;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+    display: inline-block;
 }
 
-.header nav a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+/* 번역 버튼 */
+.header nav .language-button {
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    background-color: transparent;
+    font-size: 0.9rem; /* 작은 폰트 */
+}
+
+.header nav .language-button:hover {
+    background-color: #007BFF;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* 로그아웃 버튼 */
+.header nav .logout-button {
+    color: white;
+    background-color: #dc3545;
+    border: none;
+}
+
+.header nav .logout-button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+/* 페이지 이동 버튼 */
+.header nav .page-button {
+    color: white;
+    background-color: #007BFF;
+    border: none;
+}
+
+.header nav .page-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 번역 버튼 컨테이너 */
+.language-container {
+    display: flex;
+    gap: 8px;
+    padding: 5px 10px;
+    background-color: #f8f9fa;
+    border: 1px solid #e0e0e0;
+    border-radius: 20px;
+    align-items: center;
+}
+
+/* 번역 버튼 컨테이너 */
+.language-container {
+    display: flex;
+    gap: 8px;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    align-items: center;
+}
+
+/* 번역 버튼 */
+.language-container .language-button {
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.language-container .language-button:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #f0f8ff;
+    transform: scale(1.05);
 }
 
 /* 본문 컨테이너 */

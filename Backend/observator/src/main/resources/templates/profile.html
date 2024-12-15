@@ -53,14 +53,21 @@
 <body>
     <!-- 헤더 -->
     <header class="header">
-        <div class="logo" th:text="#{header_profile}"> 프로필 </div>
+        <div class="logo" th:text="#{header_profile}">프로필</div>
         <nav>
-            <div class="language-switcher">
-                <a href="?lang=en">English</a> | <a href="?lang=kr">한국어</a>
+            <!-- 번역 버튼 컨테이너 -->
+            <div class="language-container">
+                <a href="?lang=en" class="language-button">English</a> |
+                <a href="?lang=kr" class="language-button">한국어</a>
             </div>
-            <a href="/trade" th:text="#{header_dashboard}">대시보드</a>
-            <a href="/profile" th:text="#{header_profile}">프로필</a>
-            <a href="/home" th:text="#{header_home}">홈</a>
+    
+            <!-- 페이지 이동 버튼 -->
+            <a href="/trade" class="page-button" th:text="#{header_dashboard}">대시보드</a>
+            <a href="/profile" class="page-button active" th:text="#{header_profile}">프로필</a>
+            <a href="/home" class="page-button" th:text="#{header_home}">홈</a>
+    
+            <!-- 로그아웃 버튼 -->
+            <a href="/logout" class="logout-button" th:text="#{header_logout}">로그아웃</a>
             <a href="#about"></a>
         </nav>
     </header>
