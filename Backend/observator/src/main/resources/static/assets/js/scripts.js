@@ -220,15 +220,20 @@ function updateTradeData(data) {
     }
 }
 
-// 차트 데이터를 업데이트하는 함수
 let btcChart;
+const MAX_DATA_DURATION = 5 * 60 * 1000; // 5분 (밀리초 단위)
+let chartDataTime = []; // 타임스탬프를 저장하는 배열
+
 function updateChartData(data) {
+    const currentTime = new Date(data.timestamp);
+
+    // Chart 초기화
     if (!btcChart) {
         const ctx = document.getElementById("btcChart").getContext("2d");
         btcChart = new Chart(ctx, {
             type: "line",
             data: {
-                labels: [],
+                labels: [], // 시간 라벨
                 datasets: [
                     {
                         label: "비트코인 가격 (KRW)",
@@ -260,10 +265,69 @@ function updateChartData(data) {
             }
         });
     }
-    btcChart.data.labels.push(new Date(data.timestamp).toLocaleTimeString());
+
+    // 새 데이터 추가
+    btcChart.data.labels.push(currentTime.toLocaleTimeString());
     btcChart.data.datasets[0].data.push(data.trade_price);
+    chartDataTime.push(currentTime); // 타임스탬프 저장
+
+    // 오래된 데이터 삭제 (5분 초과 데이터)
+    while (chartDataTime.length > 0 && currentTime - chartDataTime[0] > MAX_DATA_DURATION) {
+        btcChart.data.labels.shift(); // 첫 번째 라벨 제거
+        btcChart.data.datasets[0].data.shift(); // 첫 번째 데이터 제거
+        chartDataTime.shift(); // 첫 번째 타임스탬프 제거
+    }
+
+    // 차트 업데이트
     btcChart.update();
 }
+
+
+
+// 차트 데이터를 업데이트하는 함수 - 실시간 : 원래코드 
+// let btcChart;
+// function updateChartData(data) {
+//     if (!btcChart) {
+//         const ctx = document.getElementById("btcChart").getContext("2d");
+//         btcChart = new Chart(ctx, {
+//             type: "line",
+//             data: {
+//                 labels: [],
+//                 datasets: [
+//                     {
+//                         label: "비트코인 가격 (KRW)",
+//                         data: [],
+//                         borderColor: "rgba(54, 162, 235, 1)",
+//                         borderWidth: 2,
+//                         tension: 0.4, // 부드러운 곡선
+//                         pointRadius: 0
+//                     }
+//                 ]
+//             },
+//             options: {
+//                 responsive: true,
+//                 maintainAspectRatio: false,
+//                 scales: {
+//                     x: {
+//                         title: {
+//                             display: true,
+//                             text: "시간"
+//                         }
+//                     },
+//                     y: {
+//                         title: {
+//                             display: true,
+//                             text: "가격 (KRW)"
+//                         }
+//                     }
+//                 }
+//             }
+//         });
+//     }
+//     btcChart.data.labels.push(new Date(data.timestamp).toLocaleTimeString());
+//     btcChart.data.datasets[0].data.push(data.trade_price);
+//     btcChart.update();
+// }
 
 // UI 요소 초기화
 function initializeUIElements() {
