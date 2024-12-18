@@ -64,7 +64,7 @@ spring.h2.console.enabled=true
 spring.h2.console.path=/h2-console
 ```
 
-4. **Backend/observator/src/main/java/com/happy/observator** 경로에 있는 **_ObseravtorApplication.java_** 파일도 아래와 같이 변경해줍니다.
+4. **Backend/observator/src/main/java/com/happy/observator** 경로에 있는 **_ObservatorApplication.java_** 파일도 아래와 같이 변경해줍니다.
 ```
 package com.happy.observator;
 
@@ -91,7 +91,7 @@ public class ObservatorApplication {
 }
 ```
 
-5. 변경을 완료했다면 **_ObseravtorApplication.java_** 를 실행시켜준 후 로컬호스트의 8080포트로 접속합니다.
+5. 변경을 완료했다면 **_ObservatorApplication.java_** 를 실행시켜준 후 로컬호스트의 8080포트로 접속합니다.
 
     [localhost 바로가기](http://localhost:8080)
 
